@@ -9,13 +9,11 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8080/api/auth';
-
   constructor(private http: HttpClient) { }
   platformId = inject(PLATFORM_ID);
   login(credentials: {username: string, password: string}): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       tap((response: any) => {
-        // Store the token in localStorage so the Interceptor can find it
         if (response.token) {
           localStorage.setItem('token', response.token);
         }

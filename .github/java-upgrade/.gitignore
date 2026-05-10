@@ -1,24 +1,15 @@
-# --- OS files ---
 .DS_Store
 Thumbs.db
-
-# --- IDE files ---
 .idea/
 .vscode/
 *.iml
 *.swp
-
-# --- Backend (Spring Boot) ---
 **/target/
 **/HELP.md
 **/.mvn/wrapper/maven-wrapper.jar
-
-# --- Frontend (Angular) ---
 **/node_modules/
 **/.angular/
 **/dist/
 **/.editorconfig
-**/package-lock.json (Optional: some keep this, but ignore for simple projects)
-
-# --- Docker ---
+**/package-lock.json
 **/.docker/

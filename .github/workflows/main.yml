@@ -1,8 +1,8 @@
-name: Full Stack CI
+name: Deployment and Testing
 
 on:
   push:
-    branches: [ "main" ] # Runs whenever you push to the main branch
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -19,19 +19,19 @@ jobs:
           distribution: 'temurin'
           cache: maven
           
-      - name: Run Spring Boot Tests
+      - name: Spring Boot Tests
         run: |
-          cd deploytesting # CHANGE THIS to your backend folder name
+          cd deploytesting
           mvn clean test
 
   docker-build:
-    needs: backend-tests # Only build Docker if tests pass
+    needs: backend-tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
       - name: Build Backend Image
-        run: docker build -t spring-api ./deploytesting # CHANGE THIS
+        run: docker build -t spring-api ./deploytesting
         
       - name: Build Frontend Image
         run: docker build -t angular-ui ./task-manager-ui

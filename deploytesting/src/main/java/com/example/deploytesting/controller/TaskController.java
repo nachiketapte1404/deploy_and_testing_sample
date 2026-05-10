@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/tasks")
-@CrossOrigin(origins = "http://localhost:4200") // Add this!
+@CrossOrigin(origins = "http://localhost:4200")
 public class TaskController {
 
     @GetMapping
     public List<String> getTasks() {
-        return Arrays.asList("Setup Spring Boot", "Configure JWT", "Build Angular App");
+        return Arrays.asList("Wash Clothes", "Polish Shoes", "Get Mangoes, Amla from supermarket","Pay phone bill","Book office cab", "Perform Sandhya Vandanam");
     }
 }

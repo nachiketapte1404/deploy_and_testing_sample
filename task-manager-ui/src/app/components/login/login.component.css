@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
+.welcome_message{
+    text-align: center;
+    font-family: Playwrite GB  S, sans-serif;
+    border-bottom: 2px solid #e74c3c;
+    color: cadetblue;
+}

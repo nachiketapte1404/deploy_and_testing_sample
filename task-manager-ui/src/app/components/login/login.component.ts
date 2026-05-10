@@ -7,7 +7,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-login',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   loginData = { username: '', password: '' };
@@ -18,10 +19,10 @@ export class LoginComponent {
     this.authService.login(this.loginData).subscribe({
       next: (response) => {
         console.log('Login successful!', response);
-        this.router.navigate(['/tasks']); // Redirect to tasks after login
+        this.router.navigate(['/tasks']);
       },
       error: (err) => {
-        alert('Login failed! Check console for details.');
+        alert('Login failed!');
         console.error(err);
       }
     });

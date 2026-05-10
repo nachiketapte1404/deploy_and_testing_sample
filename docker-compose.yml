@@ -1,7 +1,6 @@
-version: '3.8'
 services:
   backend:
-    build: ./deploytesting # Replace with your actual backend folder name
+    build: ./deploytesting
     ports:
       - "8080:8080"
     networks:
@@ -10,7 +9,7 @@ services:
   frontend:
     build: ./task-manager-ui
     ports:
-      - "4200:80" # Maps local 4200 to Nginx port 80 inside container
+      - "4200:80"
     networks:
       - app-network
     depends_on:

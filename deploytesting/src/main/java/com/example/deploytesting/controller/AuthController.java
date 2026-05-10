@@ -15,7 +15,7 @@ import com.example.deploytesting.security.JwtUtils;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = {"http://localhost:4200"}) // Allows Angular to talk to Spring Boot
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class AuthController {
 
     @Autowired
@@ -23,9 +23,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
-        
-        // MOCK AUTHENTICATION LOGIC
-        // In a real app, you'd use authenticationManager.authenticate()
         if ("admin".equals(loginRequest.getUsername()) && "password".equals(loginRequest.getPassword())) {
             
             String jwt = jwtUtils.generateToken(loginRequest.getUsername());

@@ -5,5 +5,5 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'tasks', component: TaskListComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' } // Default to login
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

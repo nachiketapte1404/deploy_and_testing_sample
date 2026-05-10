@@ -27,7 +27,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
         try {
             String jwt = parseJwt(request);
-            // Inside doFilterInternal
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                 String username = jwtUtils.getUserNameFromJwtToken(jwt);
 
@@ -35,22 +34,18 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                         null, new ArrayList<>());
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);
-
-                // ADD THIS LOG:
                 System.out.println("User " + username + " successfully authenticated in Security Context");
             }
         } catch (Exception e) {
             logger.error("Cannot set user authentication: {}", e);
         }
-
-        // This is where the error was happening:
         filterChain.doFilter(request, response);
     }
 
     private String parseJwt(HttpServletRequest request) {
         String headerAuth = request.getHeader("Authorization");
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
-            return headerAuth.substring(7); // Remove "Bearer " prefix
+            return headerAuth.substring(7);
         }
         return null;
     }

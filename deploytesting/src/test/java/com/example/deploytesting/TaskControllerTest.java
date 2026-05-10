@@ -24,17 +24,14 @@ public class TaskControllerTest {
     @Test
     public void shouldReturnForbiddenWithoutToken() throws Exception {
         mockMvc.perform(get("/api/tasks"))
-               .andExpect(status().isForbidden()); // Verifies 403
+               .andExpect(status().isForbidden());
     }
 
     @Test
     public void shouldReturnTasksWithValidToken() throws Exception {
-        // 1. Generate a real token using our utility
         String token = jwtUtils.generateToken("admin");
-
-        // 2. Perform the request with the Authorization header
         mockMvc.perform(get("/api/tasks")
                .header("Authorization", "Bearer " + token))
-               .andExpect(status().isOk()); // Verifies 200
+               .andExpect(status().isOk()); 
     }
 }

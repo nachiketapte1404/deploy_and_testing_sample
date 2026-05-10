@@ -7,21 +7,15 @@ import { CommonModule } from '@angular/common';
   selector: 'app-task-list',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <h2>Your Protected Tasks</h2>
-    <ul>
-      <li *ngFor="let task of tasks">{{ task }}</li>
-    </ul>
-  `
+  templateUrl: './task-list.component.html',
+  styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
   tasks: string[] = [];
-  private platformId = inject(PLATFORM_ID); // Inject Platform ID
+  private platformId = inject(PLATFORM_ID);
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    // Note: We don't manually add headers here! 
-    // The Interceptor we built handles that automatically.
     if (isPlatformBrowser(this.platformId)) {
       this.http.get<string[]>('http://localhost:8080/api/tasks').subscribe({
         next: (data) => this.tasks = data,
