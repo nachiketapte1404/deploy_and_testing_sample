@@ -21,7 +21,7 @@ jobs:
           
       - name: Run Spring Boot Tests
         run: |
-          cd backend-folder-name # CHANGE THIS to your backend folder name
+          cd deploytesting # CHANGE THIS to your backend folder name
           mvn clean test
 
   docker-build:
