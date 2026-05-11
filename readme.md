@@ -7,3 +7,5 @@ Please run npm i inside task-manager-ui folder after cloning the project.
 Versions:
 Angular - 17 <br>
 Java - 21
+
+To run the project, do - docker compose up --build
